@@ -1,8 +1,9 @@
 # Write Your Own 64-bit Operating System Kernel From Scratch
 
-## Naming
- - Change the docker image name below
- - Change the OS Name in the grub.cfg file (targets\x86_64\iso\boot\grub) 
+## Configuration
+ - 'config/config.json' contains all the configuration settings
+ - 'id' is used for the docker image
+ - 'name' is used for the grub configuration
 
 ## Prerequisites
 
@@ -18,6 +19,10 @@ Build an image for our build-environment:
 
 ## Build
 
+### Using the script
+ - Windows (PowerShell): './os.ps1 -b'
+
+### Manual
 Enter build environment:
  - Linux or MacOS: `docker run --rm -it -v "$(pwd)":/root/env custom-os-template`
  - Windows (CMD): `docker run --rm -it -v "%cd%":/root/env custom-os-template`
@@ -35,6 +40,10 @@ To leave the build environment, enter `exit`.
 
 You can emulate your operating system using [Qemu](https://www.qemu.org/): (Don't forget to [add qemu to your path](https://dev.to/whaleshark271/using-qemu-on-windows-10-home-edition-4062#:~:text=2.-,Add%20Qemu%20path%20to%20environment%20variables%20settings,-Copy%20the%20Qemu)!)
 
+### Using the script
+ - Windows (PowerShell): './os.ps1 -r'
+
+### Manual
  - `qemu-system-x86_64 -cdrom dist/x86_64/kernel.iso`
  - Note: Close the emulator when finished, so as to not block writing to `kernel.iso` for future builds.
 
